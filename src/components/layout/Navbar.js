@@ -1,27 +1,26 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-export class Navbar extends Component {
-//these default props are if you want your component to have defaults for the props used in case none are passed in.
-  static defaultProps ={
-    title:'Github Finder',
-    icon: 'fab fa-github'
-  }
-
-  //this is for typechecking since we are not using typescript
-  static propTypes = {
-    title: PropTypes.string.isRequired,
-    icon: PropTypes.string.isRequired
-  }
-  render() {
+const Navbar = ({icon, title}) =>{
     return (
       <nav className='navbar bg-primary'>
         <h1>
-          <i className={this.props.icon} /> {this.props.title}
+          <i className={icon} /> {title}
         </h1>
       </nav>
     )
-  }
+}
+//these default props are if you want your component to have defaults for the props used in case none are passed in.
+//doing it like this is how you define proptypes for functional comoponents
+Navbar.defaultProps ={
+  title:'Github Finder',
+  icon: 'fab fa-github'
 }
 
-export default Navbar
+//this is for typechecking since we are not using typescript
+Navbar.propTypes = {
+  title: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired
+}
+
+export default Navbar;
